@@ -41,7 +41,13 @@ set showcmd "在状态栏显示正在输入的命令
 set showmode " 左下角显示当前vim模式
 set backspace=indent,eol,start
 
-let g:indentLine_color_term = 239
+" vim-indent-guides settings
+" Use <Leader>ig to open it
+"let g:indent_guides_enable_on_vim_startup = 1 " default on
+let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 
 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数
 set scrolloff=10 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数

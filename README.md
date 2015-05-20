@@ -224,6 +224,17 @@ let g:multi_cursor_quit_key='<Esc>'
 
 [[Vim-multiple-cursors Document Source]](https://github.com/terryma/vim-multiple-cursors)
 
+---
+
+### bundles/vim-indent-guides
+
+Use `<Leader>ig` to open it                                                                                   
+
+Add this to the vimrc file can set default on.
+```viml
+let g:indent_guides_enable_on_vim_startup = 1 " default on
+```
+
 ===
 
 ## Other tips
