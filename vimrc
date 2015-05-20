@@ -86,7 +86,6 @@ inoremap <C-h> <LEFT>
 inoremap <C-j> <DOWN>
 inoremap <C-k> <UP>
 
-imap <C-CR> aaaaaa<ESC>o
 
 
 " 撤销
