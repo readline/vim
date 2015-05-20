@@ -82,7 +82,7 @@ let g:tagbar_autofocus=1
 nmap <F6> :TagbarToggle<CR>
 
 " Auto mark complement
-inoremap ( ()<LEFT>
+" inoremap ( ()<LEFT>
 inoremap [ []<LEFT>
 inoremap { {}<LEFT>
 inoremap < <><LEFT>
