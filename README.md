@@ -8,6 +8,7 @@ This repository is my private vim configurations and related plugins.
 
 ```bash
 rm -rf ~/.vim ~/.vimrc
+git clone git@github.com:readline/vim.git
 mv vim ~/.vim
 cd ~/.vim
 ./init.sh
