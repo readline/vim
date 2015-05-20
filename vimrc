@@ -5,6 +5,15 @@ call pathogen#infect()
 syntax enable
 syntax on
 
+" Set default coding
+set fenc=utf-8 
+set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
+set shortmess=atI " 去掉欢迎界面
+
+" 不要生成swap文件，当buffer被丢弃的时候隐藏它 
+setlocal noswapfile 
+set bufhidden=hide
+
 " Color Schema
 set background=dark
 let g:molokai_original = 1
@@ -41,6 +50,10 @@ set wrap "设置自动折行
 set matchpairs+=<:>
 set hlsearch
 
+" 用空格键来开关折叠 
+set foldenable 
+set foldmethod=manual 
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR> 
 
 " NERD tree
 let NERDChristmasTree=0
@@ -63,4 +76,50 @@ inoremap { {}<ESC>i
 inoremap < <><ESC>i
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
+
+" Remember the cursor place for next time edit
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif   
+
+
+" Automatic header with <F4>
+map <F4> :call TitleDet()<cr>'s
+function AddTitle()
+    call append(0,"# =============================================================================")
+    call append(1,"# Filename: ".expand("%:t"))
+    call append(2,"# Version: ")
+    call append(3,"# Author: Kai Yu - finno@live.cn")
+    call append(4,"# https://github.com/readline")
+    call append(5,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))
+    call append(6,"# Description: ")
+    call append(7,"# ")
+    call append(8,"# =============================================================================")
+    echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
+endf
+"更新最近修改时间和文件名
+function UpdateTitle()
+    normal m'
+    execute '/# *Last modified:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M")@'
+    normal ''
+    normal mk
+    execute '/# *Filename:/s@:.*$@\=": ".expand("%:t")@'
+    execute "noh"
+    normal 'k
+    echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
+endfunction
+"判断前10行代码里面，是否有Last modified这个单词，
+"如果没有的话，代表没有添加过作者信息，需要新添加；
+"如果有的话，那么只需要更新即可
+function TitleDet()
+    let n=1
+    "默认为添加
+    while n < 10
+        let line = getline(n)
+        if line =~ '^\#\s*\S*Last\smodified:\S*.*$'
+            call UpdateTitle()
+            return
+        endif
+        let n = n + 1
+    endwhile
+    call AddTitle()
+endfunction
 
