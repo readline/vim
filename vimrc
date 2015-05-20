@@ -86,8 +86,7 @@ nmap <F6> :TagbarToggle<CR>
 inoremap [ []<LEFT>
 inoremap { {}<LEFT>
 inoremap < <><LEFT>
-inoremap ) (
-inoremap )) )
+inoremap (( ()<LEFT>
 inoremap ] [
 inoremap ]] ]
 inoremap '' ''
