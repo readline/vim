@@ -57,6 +57,10 @@ set foldenable
 set foldmethod=manual 
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR> 
 
+" Nerd commenter
+let mapleader="," ""
+
+
 " NERD tree
 let NERDChristmasTree=0
 let NERDTreeWinSize=35

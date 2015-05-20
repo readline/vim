@@ -28,3 +28,6 @@
 [submodule "bundle/indeltLine"]
 	path = bundle/indeltLine
 	url = git@github.com:Yggdroot/indentLine.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git@github.com:scrooloose/nerdcommenter.git
