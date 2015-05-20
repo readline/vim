@@ -70,12 +70,41 @@ let g:tagbar_autofocus=1
 nmap <F6> :TagbarToggle<CR>
 
 " Auto mark complement
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-inoremap < <><ESC>i
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
+inoremap < <><LEFT>
+inoremap () ()
+inoremap '' ''
+inoremap "" ""
+
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+
+inoremap <C-l> <RIGHT>
+inoremap <C-h> <LEFT>
+inoremap <C-j> <DOWN>
+inoremap <C-k> <UP>
+
+imap <C-CR> aaaaaa<ESC>o
+
+
+" 撤销
+set undolevels=200              "How many undos
+set undoreload=1000             "number of lines to save for undo
+if v:version >= 730
+    set undofile                 "keep a persistent backup file
+    set undodir=~/.vim/vimundo
+endif
+
+
+" 状态栏
+set ruler                        "显示当前的行号列号
+set showcmd                      "在状态栏显示正在输入的命令
+set showmode
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+set laststatus=2                 "命令行（在状态行下）的高度，默认为1，这里是2
+
 
 " Remember the cursor place for next time edit
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif   
@@ -84,15 +113,15 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 " Automatic header with <F4>
 map <F4> :call TitleDet()<cr>'s
 function AddTitle()
-    call append(0,"# =============================================================================")
-    call append(1,"# Filename: ".expand("%:t"))
-    call append(2,"# Version: ")
-    call append(3,"# Author: Kai Yu - finno@live.cn")
-    call append(4,"# https://github.com/readline")
-    call append(5,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))
-    call append(6,"# Description: ")
-    call append(7,"# ")
-    call append(8,"# =============================================================================")
+    call append(1,"# =============================================================================")
+    call append(2,"# Filename: ".expand("%:t"))
+    call append(3,"# Version: ")
+    call append(4,"# Author: Kai Yu - finno@live.cn")
+    call append(5,"# https://github.com/readline")
+    call append(6,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))
+    call append(7,"# Description: ")
+    call append(8,"# ")
+    call append(9,"# =============================================================================")
     echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
 endf
 "更新最近修改时间和文件名
