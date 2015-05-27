@@ -83,17 +83,17 @@ nmap <F6> :TagbarToggle<CR>
 
 " Auto mark complement
 " inoremap ( ()<LEFT>
-inoremap [ []<LEFT>
 inoremap { {}<LEFT>
-inoremap < <><LEFT>
 inoremap (( ()<LEFT>
-inoremap ] [
-inoremap ]] ]
+inoremap [[ []<LEFT>
+inoremap << <><LEFT>
 inoremap '' ''
 inoremap "" ""
 
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
+
+inoremap __ ____<LEFT><LEFT>
 
 inoremap <C-l> <RIGHT>
 inoremap <C-h> <LEFT>
