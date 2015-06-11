@@ -2,8 +2,6 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
-syntax enable
-syntax on
 
 " Set default coding
 set fenc=utf-8 
@@ -14,13 +12,16 @@ set shortmess=atI " 去掉欢迎界面
 setlocal noswapfile 
 set bufhidden=hide
 
-" Color Schema
+" Color Scheme
+syntax on 
+syntax enable
+
 set background=dark
+colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
-colorscheme molokai
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
+" highlight NonText guibg=#060606
+" highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 "
 filetype plugin indent on
